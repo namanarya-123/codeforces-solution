@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main(){
+
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    int t;
+    cin>>t;
+
+    while(t--){
+        int n, k;
+        cin >> n >> k;
+        vector<int>arr(n);
+
+        for(int i=0; i<n; i++){
+            cin>>arr[i];
+        }
+
+        vector<int>a_ = arr;
+        sort(a_.begin(), a_.end());
+
+
+
+
+
+    if(a_==arr || k>1)
+       cout << "YES\n";
+    else
+       cout << "NO\n";
+    }
+
+    return 0;
+}
