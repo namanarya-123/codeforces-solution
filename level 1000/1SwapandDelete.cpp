@@ -9,20 +9,52 @@ int main(){
     cin>>t;
 
     while(t--){
-        long long n, k, x;
-        cin>>n>>k>>x;
+       
+        string s;
+        cin>>s;
 
-        long long small = (k*(k+1))/2;
+        int c0 =0;
+        int c1 = 0;
 
-        long long  y = n-k;
+        for(int i=0; i<s.size(); i++)
+        {
+            if(s[i]=='0')
+            c0++;
+            else
+            c1++;
+        }
 
-        long long big = (n*(n+1))/2 - (y*(y+1))/2;
+        
+        int op =0;
 
-        if(x>= small && x<=big)
-        cout<<"YES"<<endl;
-        else
-        cout<<"NO"<<endl;
+        for(int i=0; i<s.size(); i++)
+        {
+            if(s[i] == '0' )
+            {
+                if(c1>0)
+                {
+                    
+                    c1--;
+                }else{
+                    op= s.size()-i;
+                    break;
+                }
+            }else{
+                if(c0>0)
+                {
+                  
+                    c0--;
+                }else{
+                    op= s.size() -i;
+                    break;
+                }
 
+            }
+        }
+
+    
+
+        cout<<op<<endl;
 
 
     }
