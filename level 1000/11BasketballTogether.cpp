@@ -10,47 +10,30 @@ int main() {
     cin >> t;
 
     while(t--) {
-        int n , d;
-        cin>>n>>d;
+      int n;
+      cin>> n;
 
-        vector<int>arr(n);
+      string s;
+      cin>>s;
 
-        for(int i=0; i<n; i++)
+      stack<char>st;
+
+      for(int i=0; i<n; i++)
+      {
+        if(s[i] == ')')
         {
-            cin>>arr[i];
-        }
-
-        sort(arr.begin(), arr.end());
-
-        int l=0; int r = n-1;
-        int ans =0;
-        
-        while(l<=r)
-        {
-            int p = arr[r];
-            
-            int no = 1;
-            for(int i=2 ; i<n; i++)
+            if( ! st.empty() && st.top() == '(')
             {
-                
-                no = i*p;
-                if(no > d)
-                break;
+                st.pop();
             }
-
-            int len = no/p;
-
-            len--;
-            if(l+len < r)
-            {
-                l= l+len;
-                ans++;
-            }
-
-            r--;
         }
+        else 
+            {
+                st.push('(');
+            }
+      }
 
-        cout<<ans<<endl;
+      cout<<st.size()<<endl;
 
     }
 

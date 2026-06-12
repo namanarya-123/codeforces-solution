@@ -6,39 +6,48 @@ int main() {
     ios::sync_with_stdio(false);
     cin.tie(NULL);
 
-    int t;
-    cin >> t;
+   
+        int n , d;
+        cin>>n>>d;
 
-    while(t--) {
+        vector<int>arr(n);
 
-        int n;
-        char c;
-        cin>>n>>c;
-
-        string s;
-        cin>>s;
-
-        string temp = s+s;
-        int idx = INT_MAX;
-        int ans = 0;
-
-        for(int i= 2*n-1; i>=0 ; i--)
+        for(int i=0; i<n; i++)
         {
-            if(temp[i] == 'g')
-            {
-                idx = min(idx, i);
-            }
-            if(temp[i] == c )
-            {
-                if(idx != INT_MAX)
-                ans = max(ans, idx- i);
-
-            }
+            cin>>arr[i];
         }
+
+        sort(arr.begin(), arr.end());
+
+        int l=0;
+         int r = n-1;
+        int ans =0;
+
+
+        
+        while(l<=r)
+        {
+            int ts = 0;
+            int val = arr[r];
+            ts += val;
+
+            while( ts <= d && l<r)
+            {
+                ts+=val;
+                l++;
+            }
+
+            r--;
+
+            if(ts> d)
+            ans++;
+
+        }
+            
 
         cout<<ans<<endl;
 
-    }
+    
 
     return 0;
 }
