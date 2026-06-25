@@ -13,12 +13,12 @@ int main(){
       long long n;
       cin>>n;
 
-      vector<int>arr;
-      for(int i=0; i<n; i++)
+      vector<long long>arr(n);
+      for(long long i=0; i<n; i++)
       cin>>arr[i];
 
 
-      vector<pair<int, int>>v;
+      vector<pair<long long, long long>>v;
       for(int i=0; i<n; i++)
       {
         v.push_back({arr[i],i});
@@ -26,7 +26,7 @@ int main(){
 
       sort(v.begin(), v.end());
 
-      vector<int>pre(n);
+      vector<long long>pre(n);
       pre[0] = v[0].first;
 
       for(int i=1; i<n; i++)
@@ -35,16 +35,16 @@ int main(){
       }
 
 
-      vector<int>dif(n, 0);
+      vector<long long>dif(n, 0);
       for(int i=n-2; i>=0; i--)
       {
-        if(pre[i]>v[i+1].first)
+        if(pre[i]>=v[i+1].first)
         {
-            dif[i] = i+1-0+1;
+            dif[i] = i-0+1;
         }
       }
 
-      vector<int>ans(n);
+      vector<long long>ans(n);
 
       for(int i=0; i<n; i++)
       {
@@ -56,7 +56,7 @@ int main(){
         }
       }
 
-      vector<int>ra(n);
+      vector<long long>ra(n);
       for(int i=0; i<n; i++)
       {
         ra[v[i].second] = ans[i];
